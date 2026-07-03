@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuroraXGhof</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+header{
+padding:40px;
+text-align:center;
+background:#111827;
+}
+
+header h1{
+font-size:40px;
+}
+
+header p{
+color:#9ca3af;
+margin-top:10px;
+}
+
+section{
+padding:50px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+.profile{
+text-align:center;
+}
+
+.profile img{
+width:180px;
+height:180px;
+border-radius:50%;
+background:#374151;
+object-fit:cover;
+border:5px solid #3b82f6;
+}
+
+input{
+margin-top:20px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:#1e293b;
+padding:10px;
+border-radius:10px;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+footer{
+background:#111827;
+text-align:center;
+padding:20px;
+margin-top:50px;
+color:#9ca3af;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>AuroraXGhof</h1>
+<p>Official Personal Website</p>
+</header>
+
+<section class="profile">
+
+<img id="profile" src="https://via.placeholder.com/180">
+
+<h2 style="margin-top:20px;">Nama Anda</h2>
+
+<p>Selamat datang di website pribadi saya.</p>
+
+<input type="file" id="fotoProfil">
+
+</section>
+
+<section>
+
+<h2 style="text-align:center;">Galeri Kenangan</h2>
+
+<div class="gallery" id="gallery"></div>
+
+<div style="text-align:center;margin-top:30px;">
+<input type="file" id="fotoGaleri" multiple>
+</div>
+
+</section>
+
+<footer>
+
+© 2026 AuroraXGhof
+
+</footer>
+
+<script>
+
+document.getElementById("fotoProfil").onchange=function(e){
+
+const file=e.target.files[0];
+
+if(file){
+
+document.getElementById("profile").src=URL.createObjectURL(file);
+
+}
+
+}
+
+document.getElementById("fotoGaleri").onchange=function(e){
+
+const gallery=document.getElementById("gallery");
+
+gallery.innerHTML="";
+
+Array.from(e.target.files).forEach(file=>{
+
+let div=document.createElement("div");
+
+div.className="card";
+
+let img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+div.appendChild(img);
+
+gallery.appendChild(div);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
